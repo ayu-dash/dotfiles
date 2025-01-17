@@ -198,7 +198,7 @@ print_color $WARN " Installation complete"
 
 read -p "${CAT} Reboot Now? [Y/n]: " choice
 choice=${choice:-n}
-choice=$(echo "$choice" | tr '[:upper:]' '[:lower:]'
+choice=$(echo "$choice)" | tr '[:upper:]' '[:lower:]'
 
 if [[ "$choice" == "n" ]]; then
     exit 0
