@@ -1,0 +1,183 @@
+{
+  "layer": "top",
+  "spacing": 10,
+  "margin-top": 10,
+  "margin-left": 10,
+  "margin-right": 10,
+  // "margin-bottom": 10,
+  "modules-left": ["custom/arch", "group/left"],
+  "modules-center": ["group/center"],
+  "modules-right": ["group/right"],
+  "reload_style_on_change": true,
+  // Modules Right
+  "group/right": {
+    "orientation": "horizontal",
+    "modules": [
+      "backlight",
+      "pulseaudio",
+      "network",
+      "battery",
+      "tray",
+      "custom/kahfein",
+      "custom/power"
+    ]
+  },
+  "tray": {
+    "icon-size": 14,
+    "spacing": 4
+  },
+  "custom/power": {
+    "format": "<span color='#f38ba8'>⏻</span>",
+    "on-click": "$HOME/.config/hypr/Scripts/Wlogout.sh",
+    "tooltip": false
+  },
+  "custom/kahfein": {
+    "format": "󰅶",
+    "escape": true,
+    "interval": 1,
+    "return-type": "json",
+    "exec-on-event": false,
+    "exec": "$HOME/.config/hypr/Scripts/Kahfein.sh --status",
+    "on-click": "$HOME/.config/hypr/Scripts/Kahfein.sh --toggle",
+    "tooltip": false
+  },
+  "battery": {
+    "interval": 2,
+    "states": {
+      "warning": 20,
+      "critical": 15
+    },
+    "format": "{capacity}%  <span color='#a6e3a1'>{icon}</span>",
+    "format-full": "{capacity}%  <span color='#a6e3a1'>󰂄</span>",
+    "format-warning": "{capacity}%  <span color='#fab387'>󰂃</span>",
+    "format-critical": "{capacity}%  <span color='#f38ba8'>󱈑</span>",
+    "format-icons": {
+      "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+      "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
+    }
+  },
+  "network": {
+    // "interface": "wlo1",
+    "interval": 10,
+    "format": "{ifname}",
+    "format-wifi": "{bandwidthTotalBytes}  <span color='#89b4fa'>{icon}</span>",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-disconnected": "󰤭",
+    "tooltip-format": "  {bandwidthUpBytes}   |     {bandwidthDownBytes}",
+    "on-click-right": "kitty nmtui"
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{percent}%   <span color='#f9e2af'>{icon}</span>",
+    "format-icons": ["", "", "", "", "", "", "", "", ""]
+  },
+  "pulseaudio": {
+    "format": "{volume}%  <span color='#eba0ac'>{icon}</span>",
+    "format-muted": "Muted  <span color='#eba0ac'>󰝟</span>",
+    "tooltip": false,
+    "format-icons": {
+      "headphone": "",
+      "default": ["", "", "󰕾", "󰕾", "󰕾", "", "", ""]
+    },
+    "scroll-step": 1
+  },
+  // Modules Center
+  "group/center": {
+    "orientation": "horizontal",
+    "modules": ["custom/notification", "hyprland/workspaces", "clock"]
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "active-only": false,
+    "all-outputs": true,
+    "on-click": "activate",
+	  "on-scroll-up": "hyprctl dispatch workspace e+1",
+	  "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "persistent-workspaces": {
+    "format-icons": {
+      "1": "一",
+      "2": "二",
+      "3": "三",
+      "4": "四",
+      "5": "五",
+      "6": "六",
+      "7": "七",
+      "8": "八",
+      "9": "九",
+      "10": "十"
+    },
+    "persistent-workspaces": {
+      "*": 10
+    },
+    "tooltip": false
+  },
+  "clock": {
+    "format": "{:%H:%M}",
+    // "tooltip-format": "{:%d %B %Y}",
+    "tooltip": true,
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      // "weeks-pos"     : "right",
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        // "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode"
+    }
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+  // Modules Left
+  "group/left": {
+    "orientation": "horizontal",
+    "modules": ["cpu", "memory", "temperature", "hyprland/window"]
+  },
+  "custom/arch": {
+    "format": "<span color='#89b4fa'></span>",
+    "on-click": "~/.config/hypr/RofiScripts/RofiMenuLauncher.sh",
+    "tooltip": false
+  },
+  "cpu": {
+    "format": "<span color='#74c7ec'></span>  {usage}%",
+    "tooltip": false
+  },
+  "memory": {
+    "format": "<span color='#94e2d5'></span>  {percentage}%",
+    "tooltip": false
+  },
+  "temperature": {
+    "format": "<span color='#f9e2af'></span>   {temperatureC}°C",
+    "format-critical": "<span color='#f38ba8'></span>   {temperatureC}°C",
+    "critical-threshold": 80,
+    "tooltip": false
+  },
+  "hyprland/window": {
+    "format": "<span color='#cba6f7'></span>   {title}",
+    "tooltip": false
+  }
+}
