@@ -56,7 +56,7 @@ if [[ "$choice" == "n" ]]; then
 fi
 
 # print_color $NOTE " Installing required packages"
-sudo pacman -Sy waybar swaync git rofi-wayland rofi-calc rofi-emoji cronie xdg-user-dirs thunar gvfs tumbler kitty swww hyprlock hypridle cliphist bluez bluez-utils blueman nm-connection-editor network-manager-applet gtk3 vlc viewnior qt5-wayland qt6-wayland udiskie udisks2 ly nwg-look firefox btop base-devel imagemagick zsh zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search fastfetch networkmanager dconf-editor geany
+sudo pacman -Sy waybar swaync git rofi-wayland rofi-calc rofi-emoji cronie xdg-user-dirs thunar gvfs tumbler kitty swww hyprlock hypridle cliphist bluez bluez-utils blueman nm-connection-editor network-manager-applet gtk3 vlc viewnior qt5-wayland qt6-wayland udiskie udisks2 ly nwg-look firefox btop base-devel imagemagick zsh zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search fastfetch networkmanager unrar unzip dconf-editor geany
 
 # # update home folders
 xdg-user-dirs-update 2>&1 | tee -a "$LOG" || true
