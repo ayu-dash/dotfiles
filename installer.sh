@@ -145,12 +145,10 @@ sudo systemctl enable udisks2
 print_color $NOTE "  Downloading wallpapers"
 read -p "${CAT} Dowload wallpapers? [Y/n]: " choice
 choice=${choice:-y}
-choice=$(echo "$choice" | tr '[:upper:]' '[:lower:]'
+choice=$(echo "$choice") | tr '[:upper:]' '[:lower:]'
 
 if [[ "$choice" == "y" ]]; then
     git clone "https://github.com/ayu-dash/wallpapers.git" "$HOME/Pictures/wallpapers"
-else
-    continue
 fi
 
 # changing shell to zsh
