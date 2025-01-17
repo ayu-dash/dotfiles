@@ -149,6 +149,8 @@ choice=$(echo "$choice" | tr '[:upper:]' '[:lower:]'
 
 if [[ "$choice" == "y" ]]; then
     git clone "https://github.com/ayu-dash/wallpapers.git" "$HOME/Pictures/wallpapers"
+else
+    continue
 fi
 
 # changing shell to zsh
